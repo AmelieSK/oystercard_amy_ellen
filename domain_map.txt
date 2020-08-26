@@ -1,11 +1,11 @@
 Nouns:
 - card(balance) => .add(money) / balance + sum <= MAX_VALUE: added / balance + sum > MAX_VALUE: return err message
 => .deduct(fare) #private
-=> .touch_in(station) / enough money: journey.new  #money on card >= MIN_FARE £3
- / not enough money: return err message / current_journey not completed: end journey 
+=> .touch_in(station) / journey.new  / current_journey not completed: end journey 
  without passing a station and deduct the fare for that journey and store that journey 
  before it can start a new one
-=> .touch_out(station) / end journey / .deduct(fare) / store recorded_journey
+=> .touch_out(station) / end journey / enough money: deduct(fare)  #money on card >= MIN_FARE £3
+ / not enough money: return err message / / store recorded_journey
 => MAX_VALUE
 => @current_journey / @completed_journies
 => .pretty_prints_journies: returns a line per journey showing start_point, end_point and fare
