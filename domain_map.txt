@@ -10,7 +10,8 @@ Nouns:
 => @current_journey / @completed_journies
 => .pretty_prints_journies: returns a line per journey showing start_point, end_point and fare
 
-- journey(start_point, end_point, fare) => MIN_FARE  
+- journey(start_point, end_point, fare) => MIN_FARE
+=> .start  
 => .end(station) / there is a start_point: calculate the fare / there isn't a start_point: use penalty fare
 => .fare returns the value of the fare
 => (difference between zones + 1) x 3

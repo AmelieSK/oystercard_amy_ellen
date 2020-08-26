@@ -29,11 +29,32 @@ describe 'Card' do
 
   it 'touches in to start a journey' do
     # set up
-    card = Card.new
-    station = test_double('Kings Cross')
-    allow(station).to receive(:name) { 'Kings Cross' }
-    #
+    journey_class = test_double
+    journey = test_double
+    allow(journey_class).to receive(:new) { journey }
+    allow(journey).to receive(:start) {}
+    allow(journey).to receive(:start_point) { 'Kings Cross' }
+    card = Card.new(journey: journey_class)
+    station = test_double
     # verify
     expect(card.touch_in(station)).to eq 'Kings Cross'
   end
+
+  it 'touches out to end a journey' do
+    # set up
+    journey_class = test_double('journey class')
+    journey = test_double('journey instance')
+    station1 = test_double
+    station2 = test_double
+    allow(journey_class).to receive(:new) { journey }
+    allow(journey).to receive(:start) {}
+    allow(journey).to receive(:start_point) {}
+    allow(journey).to receive(:end) {}
+    allow(journey).to receive(:end_point) { 'Victoria' }
+    card = Card.new(journey: journey_class)
+    card.touch_in(station1)
+    # verify
+    expect(card.touch_out(station2)).to eq 'Victoria'
+  end
+
 end
